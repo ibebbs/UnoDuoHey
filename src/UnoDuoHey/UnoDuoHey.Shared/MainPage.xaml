@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="UnoDuoHey.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UnoDuoHey"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Page.Resources>
+
+    <!--
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,10,0,0">
+        <StackPanel Orientation="Vertical">
+            <Image HorizontalAlignment="Center" Width="120" Source="UnoPlatform.png"/>
+            <TextBlock Text="{Binding DeviceType}" Margin="20" FontSize="30" />
+            <TextBlock Text="{Binding ModeDescription}" Margin="20" FontSize="30" />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Screen1 -" Margin="4"/>
+                <TextBlock Text="Visible:" Margin="4"/>
+                <TextBlock Text="{Binding Screen1Visible}" Margin="4"/>
+                <TextBlock Text="Bounds:" Margin="4"/>
+                <TextBlock Text="{Binding Screen1Bounds}" Margin="4"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Screen2 -" Margin="4"/>
+                <TextBlock Text="Visible:" Margin="4"/>
+                <TextBlock Text="{Binding Screen2Visible}" Margin="4"/>
+                <TextBlock Text="Bounds:" Margin="4"/>
+                <TextBlock Text="{Binding Screen2Bounds}" Margin="4"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+    -->
+    <Canvas x:Name="Canvas">
+        <Grid Canvas.Left="{Binding Path=Screen1Bounds.Left}" Canvas.Top="{Binding Path=Screen1Bounds.Top}" Width="{Binding Path=Screen1Bounds.Width}" Height="{Binding Path=Screen1Bounds.Height}" Background="#FF3E9CFC">
+            <StackPanel Margin="0,10,0,0">
+                <Image HorizontalAlignment="Center" Width="120" Source="UnoPlatform.png"/>
+                <TextBlock Text="{Binding DeviceType}" Margin="20" FontSize="30" />
+                <TextBlock Text="Screen 1" Margin="20" FontSize="30" />
+                <TextBlock Text="{Binding ModeDescription}" Margin="20" FontSize="30" />
+            </StackPanel>
+        </Grid>
+        <Grid Canvas.Left="{Binding Path=Screen2Bounds.Left}" Canvas.Top="{Binding Path=Screen2Bounds.Top}" Width="{Binding Path=Screen2Bounds.Width}" Height="{Binding Path=Screen2Bounds.Height}"  Background="#FF7B68F4" Visibility="{Binding Screen2Visible, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                <Image HorizontalAlignment="Center" Width="120" Source="UnoPlatform.png"/>
+                <TextBlock Text="{Binding DeviceType}" Margin="20" FontSize="30" />
+                <TextBlock Text="Screen 2" Margin="20" FontSize="30" />
+                <TextBlock Text="{Binding ModeDescription}" Margin="20" FontSize="30" />
+            </StackPanel>
+        </Grid>
+    </Canvas>
+</Page>
